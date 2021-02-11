@@ -1,20 +1,14 @@
 const buttonClearInputs = document.getElementById("clear-inputs");
 const buttonLoadSampleData = document.getElementById("load-sample-data");
-const textareaInputPrefixes = document.getElementById("textarea-input-prefixes");
-const textareaInputSuffixes = document.getElementById("textarea-input-suffixes");
-const tickboxDisplayLemma = document.getElementById("display-lemma");
-const textByConcatenate = document.getElementById("text-by-concatenate");
-const buttonConcatenate = document.getElementById("concatenate");
-const textareaOutput = document.getElementById("textarea-output");
-const textByCopyToClipboard = document.getElementById("text-by-copy-to-clipboard");
-const buttonCopyToClipboard = document.getElementById("copy-to-clipboard");
-
-textareaOutput.value = "";
+const textareaInput = document.getElementById("textarea-input");
+const tickboxesDictionaries = document.querySelectorAll("#dictionary-checkboxes input");
+const textByCreateLink = document.getElementById("text-by-create-link");
+const buttonCreateLink = document.getElementById("create-link");
+const link = document.getElementById("link");
 
 
 //// Sample data the user can load if they want to:
-const sampleDataPrefixes = "ab re super trāns";
-const sampleDataSuffixes = "ferō lātiō lātīvus";
+const sampleData = "arma vir cano Troia primus ab os Italia fatum profugus Lavinia venio litus multus ille et terra iacto altus vis superus saevus memor Iuno ob ira";
 
 
 //// Functions:
@@ -28,20 +22,18 @@ const getAffixesFromTextArea = (textarea) => {
 }
 
 const clearTextMessages = () => {
-    textByConcatenate.textContent = "";
-    textByCopyToClipboard.textContent = "";
+    textByCreateLink.textContent = "";
 }
 
 const clearInputs = () => {
-    textareaInputPrefixes.value = "";
-    textareaInputSuffixes.value = "";
-    textareaOutput.value = "";
+    textareaInput.value = "";
+    link.textContent = "";
     clearTextMessages();
 }
 
 const warnOfEmptyInput = () => {
     clearTextMessages();
-    textByConcatenate.textContent = "Please put text in both inputs!";
+    textByCreateLink.textContent = "Please put text in both inputs!";
 }
 
 const warnOfEmptyOutput = () => {
@@ -51,7 +43,7 @@ const warnOfEmptyOutput = () => {
 
 const concatenate = () => {
     clearTextMessages();
-    textByConcatenate.textContent = "Concatenating, please wait...";
+    textByCreateLink.textContent = "Concatenating, please wait...";
     let outputArray = [];
 
     const prefixes = getAffixesFromTextArea(textareaInputPrefixes);
@@ -68,7 +60,7 @@ const concatenate = () => {
     });
     
     displayOutput(outputArray);
-    textByConcatenate.textContent = "Concatenated!";
+    textByCreateLink.textContent = "";
 }
 
 const displayOutput = (outputArray) => {
@@ -105,26 +97,16 @@ buttonClearInputs.addEventListener("click", ()=>{
 });
 
 buttonLoadSampleData.addEventListener("click", ()=>{
-    textareaInputPrefixes.value = sampleDataPrefixes;
-    textareaInputSuffixes.value = sampleDataSuffixes;
+    textareaInput.value = sampleData;
     clearTextMessages();
 });
 
-buttonConcatenate.addEventListener("click", ()=>{
+buttonCreateLink.addEventListener("click", ()=>{
     if (textareaInputPrefixes.value === ""
      || textareaInputSuffixes.value === "") {
         warnOfEmptyInput();
     }
     else {
         concatenate();
-    }
-});
-
-buttonCopyToClipboard.addEventListener("click", ()=>{
-    if (textareaOutput.value === "") {
-        warnOfEmptyOutput();
-    }
-    else {
-        copyToClipboard();
     }
 });
