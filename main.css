@@ -27,7 +27,7 @@
     grid-area: dictionary-checkboxes;
     display: flex;
     flex-direction: row;
-    align-items: flex-end;
+    justify-content: flex-end;
     flex-wrap: wrap;
 }
 
