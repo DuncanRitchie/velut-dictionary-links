@@ -1,9 +1,9 @@
-/* Grid layout for two input textareas */
+/* Grid layout for an input textarea alongside the div of checkboxes */
 
 #inputs {
     display: grid;
     grid-template-columns: 1fr 0.75rem 1fr;
-    grid-template-areas: "prefixes-label gap suffixes-label" "prefixes-textarea gap suffixes-textarea";
+    grid-template-areas: "input-label gap dictionaries-label" "input-textarea gap dictionary-checkboxes";
     align-items: start;
 }
 
@@ -12,19 +12,23 @@
 }
 
 #inputs label:first-of-type {
-    grid-area: prefixes-label;
+    grid-area: input-label;
 }
 
 #inputs label:last-of-type {
-    grid-area: suffixes-label;
+    grid-area: dictionaries-label;
 }
 
-#inputs textarea:first-of-type {
-    grid-area: prefixes-textarea;
+#textarea-input {
+    grid-area: input-textarea;
 }
 
-#inputs textarea:last-of-type {
-    grid-area: suffixes-textarea;
+#dictionary-checkboxes {
+    grid-area: dictionary-checkboxes;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    flex-wrap: wrap;
 }
 
 /* Tickboxes as YES/NO squares */
