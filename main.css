@@ -1,0 +1,61 @@
+/* Grid layout for two input textareas */
+
+#inputs {
+    display: grid;
+    grid-template-columns: 1fr 0.75rem 1fr;
+    grid-template-areas: "prefixes-label gap suffixes-label" "prefixes-textarea gap suffixes-textarea";
+    align-items: start;
+}
+
+#inputs label {
+    font-size: 1rem;
+}
+
+#inputs label:first-of-type {
+    grid-area: prefixes-label;
+}
+
+#inputs label:last-of-type {
+    grid-area: suffixes-label;
+}
+
+#inputs textarea:first-of-type {
+    grid-area: prefixes-textarea;
+}
+
+#inputs textarea:last-of-type {
+    grid-area: suffixes-textarea;
+}
+
+/* Tickboxes as YES/NO squares */
+
+input[type="checkbox"] {
+    opacity: 0;
+}
+
+input[type="checkbox"] + label {
+    margin-right: 2.5rem;
+}
+
+input[type="checkbox"] + label::after {
+    position: absolute;
+    margin-top: -0.25rem;
+    margin-left: 0.5rem;
+    width: 1.75rem;
+    height: 1.5rem;
+    padding-top: 0.25rem;
+    border: 0.5px solid var(--nav-text);
+    cursor: pointer;
+    text-align: center;
+    content: "NO";
+    background: var(--colour2);
+}
+
+input[type="checkbox"]:checked + label::after {
+    content: "YES";
+    background: var(--colour6);
+}
+
+input[type="checkbox"]:focus + label::after {
+    outline: 2px dashed var(--visited-text);
+}
