@@ -57,6 +57,10 @@ const dictionaries = [
     }
 ]
 
+let urlObjects = [];
+let currentIndexInUrls = 0;
+
+
 //// Functions:
 
 const getAffixesFromTextArea = (textarea) => {
@@ -79,7 +83,7 @@ const clearInputs = () => {
 
 const warnOfEmptyInput = () => {
     clearTextMessages();
-    textByCreateLink.textContent = "Please put text in both inputs!";
+    textByCreateLink.textContent = "Please put text in the input!";
 }
 
 const warnOfEmptyOutput = () => {
@@ -87,52 +91,34 @@ const warnOfEmptyOutput = () => {
     textByCopyToClipboard.textContent = "Nothing to copy!";
 }
 
-const concatenate = () => {
+const changeHrefOfLink = () => {
+    const currentUrlObject = urlObjects[currentIndexInUrls];
+    link.textContent = `${currentUrlObject.Dictionary} — ${currentUrlObject.Word}`;
+    link.href = currentUrlObject.URL;
+    link.title = `${currentUrlObject.Dictionary} — ${currentUrlObject.Word}`;
+
+    currentIndexInUrls++;
+}
+
+const createUrls = () => {
     clearTextMessages();
-    textByCreateLink.textContent = "Concatenating, please wait...";
-    let outputArray = [];
+    urlObjects = [];
+    currentIndexInUrls = 0;
 
-    const prefixes = getAffixesFromTextArea(textareaInputPrefixes);
-    const suffixes = getAffixesFromTextArea(textareaInputSuffixes);
+    const words = getAffixesFromTextArea(textareaInput);
 
-    prefixes.forEach(prefix => {
-        const firstConcatenationWithPrefix = `${prefix}${suffixes[0]}`;
-        suffixes.forEach(suffix => {
-            outputArray.push({
-                Concatenation: `${prefix}${suffix}`,
-                Lemma: firstConcatenationWithPrefix,
+    words.forEach(word => {
+        dictionaries.forEach(dictionary => {
+            urlObjects.push({
+                Dictionary: dictionary.Dictionary,
+                Word: word,
+                URL: dictionary.Formula.replace("INPUT", word)
             });
         });
     });
     
-    displayOutput(outputArray);
+    changeHrefOfLink();
     textByCreateLink.textContent = "";
-}
-
-const displayOutput = (outputArray) => {
-    const getConcatenation = (object) => {
-        return object.Concatenation;
-    }
-
-    const getDisplayStringWithLemma = (object) => {
-        return `${object.Concatenation}\t${object.Lemma}`;
-    }
-
-    const getDisplayString = tickboxDisplayLemma.checked
-                           ? getDisplayStringWithLemma
-                           : getConcatenation;
-
-    textareaOutput.value = outputArray
-        .map(getDisplayString)
-        .join("\n");
-}
-
-const copyToClipboard = () => {
-    clearTextMessages();
-    textByCopyToClipboard.textContent = "Copying to clipboard...";
-    textareaOutput.select();
-    document.execCommand("copy");
-    textByCopyToClipboard.textContent = "Copied!";
 }
 
 
@@ -148,11 +134,10 @@ buttonLoadSampleData.addEventListener("click", ()=>{
 });
 
 buttonCreateLink.addEventListener("click", ()=>{
-    if (textareaInputPrefixes.value === ""
-     || textareaInputSuffixes.value === "") {
+    if (textareaInput.value === "") {
         warnOfEmptyInput();
     }
     else {
-        concatenate();
+        createUrls();
     }
 });
