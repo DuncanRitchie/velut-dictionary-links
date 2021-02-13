@@ -3,7 +3,9 @@
 #inputs {
     display: grid;
     grid-template-columns: 1fr 0.75rem 1fr;
-    grid-template-areas: "input-label gap dictionaries-label" "input-textarea gap dictionary-tickboxes";
+    grid-template-areas: "input-label gap dictionaries-label"
+                         "input-textarea gap dictionary-tickboxes"
+                         "buttons gap dictionary-tickboxes";
     align-items: start;
     margin: 0;
 }
@@ -27,6 +29,10 @@ label {
 
 #textarea-input {
     grid-area: input-textarea;
+}
+
+#buttons-under-textarea {
+    grid-area: buttons;
 }
 
 #dictionary-tickboxes {
