@@ -71,6 +71,18 @@ const getAffixesFromTextArea = (textarea) => {
         });
 }
 
+const getTickedDictionaries = () => {
+    const tickedLabels = document.querySelectorAll("#dictionary-checkboxes input:checked + label");
+    let tickedLabelsTextContent = [];
+    for (let i = 0; i < tickedLabels.length; i++) {
+        tickedLabelsTextContent.push(tickedLabels[i].textContent);
+    }
+    
+    return dictionaries.filter(dictionaryObject => {
+        return (tickedLabelsTextContent.includes(dictionaryObject.Dictionary));
+    });
+}
+
 const clearTextMessages = () => {
     textByCreateLink.textContent = "";
 }
@@ -106,9 +118,10 @@ const createUrls = () => {
     currentIndexInUrls = 0;
 
     const words = getAffixesFromTextArea(textareaInput);
+    const tickedDictionaries = getTickedDictionaries();
 
     words.forEach(word => {
-        dictionaries.forEach(dictionary => {
+        tickedDictionaries.forEach(dictionary => {
             urlObjects.push({
                 Dictionary: dictionary.Dictionary,
                 Word: word,
