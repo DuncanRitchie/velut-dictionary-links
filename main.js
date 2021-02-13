@@ -104,12 +104,32 @@ const warnOfEmptyOutput = () => {
 }
 
 const changeHrefOfLink = () => {
-    const currentUrlObject = urlObjects[currentIndexInUrls];
-    link.textContent = `${currentUrlObject.Dictionary} — ${currentUrlObject.Word}`;
-    link.href = currentUrlObject.URL;
-    link.title = `${currentUrlObject.Dictionary} — ${currentUrlObject.Word}`;
+    if (currentIndexInUrls < urlObjects.length) {
+        const currentUrlObject = urlObjects[currentIndexInUrls];
 
-    currentIndexInUrls++;
+        // Timeout is needed so the link’s href doesn’t change
+        // until after the link has been executed.
+        window.setTimeout(()=>{
+            link.textContent = `${currentUrlObject.Dictionary} — ${currentUrlObject.Word}`;
+            link.href = currentUrlObject.URL;
+            link.title = `${currentUrlObject.Dictionary} — ${currentUrlObject.Word}`;
+            link.style.display = "initial";
+        }, 50);
+
+        currentIndexInUrls++;
+    }
+    else {
+        // Timeout is needed so the link’s href doesn’t change
+        // until after the link has been executed.
+        window.setTimeout(()=>{
+            link.href = "";
+            link.title = "";
+            link.textContent = "";
+            link.style.display = "none";
+        }, 50);
+        currentIndexInUrls = 0;
+        textByCreateLink.textContent = "All links have been opened!";
+    }
 }
 
 const createUrls = () => {
