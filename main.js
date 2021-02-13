@@ -1,6 +1,7 @@
 const buttonClearInputs = document.getElementById("clear-inputs");
 const buttonLoadSampleData = document.getElementById("load-sample-data");
 const textareaInput = document.getElementById("textarea-input");
+const divDictionaryCheckboxes = document.getElementById("dictionary-checkboxes");
 const tickboxesDictionaries = document.querySelectorAll("#dictionary-checkboxes input");
 const textByCreateLink = document.getElementById("text-by-create-link");
 const buttonCreateLink = document.getElementById("create-link");
@@ -62,6 +63,17 @@ let currentIndexInUrls = 0;
 
 
 //// Functions:
+
+const generateTickboxesHtml = () => {
+    divDictionaryCheckboxes.innerHTML = "";
+
+    for (let i = 0; i < dictionaries.length; i++) {
+        const dictionary = dictionaries[i];
+        newDiv = document.createElement("div");
+        newDiv.innerHTML = `<input type="checkbox" id="checkbox${i}" ${dictionary.Dictionary=="velut" ? "checked" : ""}/><label for="checkbox${i}">${dictionary.Dictionary}</label>`;
+        divDictionaryCheckboxes.appendChild(newDiv);
+    }
+}
 
 const getAffixesFromTextArea = (textarea) => {
     return textarea.value
@@ -178,3 +190,6 @@ buttonCreateLink.addEventListener("click", ()=>{
 link.addEventListener("click", ()=>{
     changeHrefOfLink();
 })
+
+//// Uncomment this to set the HTML according to the `dictionaries` array.
+// generateTickboxesHtml();
