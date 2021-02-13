@@ -1,9 +1,9 @@
-/* Grid layout for an input textarea alongside the div of checkboxes */
+/* Grid layout for an input textarea alongside the div of tickboxes */
 
 #inputs {
     display: grid;
     grid-template-columns: 1fr 0.75rem 1fr;
-    grid-template-areas: "input-label gap dictionaries-label" "input-textarea gap dictionary-checkboxes";
+    grid-template-areas: "input-label gap dictionaries-label" "input-textarea gap dictionary-tickboxes";
     align-items: start;
 }
 
@@ -23,8 +23,8 @@
     grid-area: input-textarea;
 }
 
-#dictionary-checkboxes {
-    grid-area: dictionary-checkboxes;
+#dictionary-tickboxes {
+    grid-area: dictionary-tickboxes;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;

@@ -1,8 +1,8 @@
 const buttonClearInputs = document.getElementById("clear-inputs");
 const buttonLoadSampleData = document.getElementById("load-sample-data");
 const textareaInput = document.getElementById("textarea-input");
-const divDictionaryCheckboxes = document.getElementById("dictionary-checkboxes");
-const tickboxesDictionaries = document.querySelectorAll("#dictionary-checkboxes input");
+const divDictionaryTickboxes = document.getElementById("dictionary-tickboxes");
+const tickboxesDictionaries = document.querySelectorAll("#dictionary-tickboxes input");
 const textByCreateLink = document.getElementById("text-by-create-link");
 const buttonCreateLink = document.getElementById("create-link");
 const link = document.getElementById("link");
@@ -65,13 +65,13 @@ let currentIndexInUrls = 0;
 //// Functions:
 
 const generateTickboxesHtml = () => {
-    divDictionaryCheckboxes.innerHTML = "";
+    divDictionaryTickboxes.innerHTML = "";
 
     for (let i = 0; i < dictionaries.length; i++) {
         const dictionary = dictionaries[i];
         newDiv = document.createElement("div");
-        newDiv.innerHTML = `<input type="checkbox" id="checkbox${i}" ${dictionary.Dictionary=="velut" ? "checked" : ""}/><label for="checkbox${i}">${dictionary.Dictionary}</label>`;
-        divDictionaryCheckboxes.appendChild(newDiv);
+        newDiv.innerHTML = `<input type="checkbox" id="tickbox${i}" ${dictionary.Dictionary=="velut" ? "checked" : ""}/><label for="checkbox${i}">${dictionary.Dictionary}</label>`;
+        divDictionaryTickboxes.appendChild(newDiv);
     }
 }
 
@@ -84,7 +84,7 @@ const getAffixesFromTextArea = (textarea) => {
 }
 
 const getTickedDictionaries = () => {
-    const tickedLabels = document.querySelectorAll("#dictionary-checkboxes input:checked + label");
+    const tickedLabels = document.querySelectorAll("#dictionary-tickboxes input:checked + label");
     let tickedLabelsTextContent = [];
     for (let i = 0; i < tickedLabels.length; i++) {
         tickedLabelsTextContent.push(tickedLabels[i].textContent);
