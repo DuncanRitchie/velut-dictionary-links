@@ -92,10 +92,13 @@
                 <a href="https://www.velut.co.uk/" title="velut — a Latin rhyming dictionary">velut</a> is my Latin vocabulary website. When adding words to velut, I find it useful to check them in online dictionaries. This page helps me do this.
             </p>
             <p>
-                To use it, enter a load of words into the textarea, and select from a list of URL templates. Then click a link. The href of the link comes from an array of strings created by combining the words with the URL templates. Clicking the link makes it cycle through the array.
+                To use it, enter a load of words into the textarea, select the online dictionaries you want from the list, then click “Create Link”. Behind the scenes, this generates an array of URLs based on the words you entered and the dictionaries you selected. On the page, you get a link. The href of the link is the first element in the array of URLs. Clicking the link makes it change to the next URL in the array. This means that repeated clicks to the link take you to different pages.
             </p>
             <p>
-                If you like, you can load a small amount of sample data using the button at the top of the page, so you can see what this page does. Or you can type or paste your own data in.
+                On Windows, you can hold the <kbd>Ctrl</kbd> key while you click the link to open it in a new tab without switching view to the new tab.
+            </p>
+            <p>
+                If you like, you can load a small amount of sample words using the button at the top of the page, so you can see what this page does. Or you can type or paste your own data in.
             </p>
         </section>
     </main>
