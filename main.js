@@ -141,3 +141,7 @@ buttonCreateLink.addEventListener("click", ()=>{
         createUrls();
     }
 });
+
+link.addEventListener("click", ()=>{
+    changeHrefOfLink();
+})
