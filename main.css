@@ -9,6 +9,9 @@
 
 #inputs label {
     font-size: 1rem;
+}
+
+#inputs label:not([for]) {
     display: inline-block;
     padding-bottom: 0.5rem;
 }
