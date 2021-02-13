@@ -95,6 +95,10 @@ const getTickedDictionaries = () => {
     });
 }
 
+const areNoDictionariesSelected = () => {
+    return document.querySelectorAll("#dictionary-tickboxes input:checked").length == 0
+}
+
 const clearTextMessages = () => {
     textByCreateLink.textContent = "";
 }
@@ -110,9 +114,9 @@ const warnOfEmptyInput = () => {
     textByCreateLink.textContent = "Please put text in the input!";
 }
 
-const warnOfEmptyOutput = () => {
+const warnOfNoDictionariesSelected = () => {
     clearTextMessages();
-    textByCopyToClipboard.textContent = "Nothing to copy!";
+    textByCreateLink.textContent = "No dictionaries selected!";
 }
 
 const changeHrefOfLink = () => {
@@ -181,6 +185,9 @@ buttonLoadSampleData.addEventListener("click", ()=>{
 buttonCreateLink.addEventListener("click", ()=>{
     if (textareaInput.value === "") {
         warnOfEmptyInput();
+    }
+    else if (areNoDictionariesSelected()) {
+        warnOfNoDictionariesSelected();
     }
     else {
         createUrls();
