@@ -1,7 +1,9 @@
 # Duncan’s Links to Online Dictionaries for velut
-Webpage with a link that changes its href when you click it. The href is determined by combining words in a textarea with a set of URL templates. 
+[Deployed on Netlify](https://velut-dictionary-links.netlify.app/)
 
-[velut](https://www.velut.co.uk) is my Latin vocabulary website. When adding words to velut, I find it useful to check them in online dictionaries. This page helps me do this. To use it, enter a load of words into the textarea, and select from a list of URL templates. Then click a link. The href of the link comes from an array of strings created by combining the words with the URL templates. Clicking the link makes it cycle through the array.
+Webpage with a link that changes its href when you click it. The hrefs are determined by combining words in a textarea with a set of URL templates. 
+
+[velut](https://www.velut.co.uk) is my Latin vocabulary website. When adding words to velut, I find it useful to check them in online dictionaries. This page helps me do this. To use it, enter a load of words into the textarea, and select from a list of dictionaries. Then click a link. The href of the link comes from an array of strings created by combining the words with URL templates for the dictionaries. Clicking the link makes it cycle through the array. In this way, you can look multiple words up in multiple dictionaries by repeatedly clicking a single link.
 
 -----
 
