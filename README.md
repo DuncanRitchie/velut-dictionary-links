@@ -1,5 +1,5 @@
 # Links to Online Dictionaries for velut
-[Deployed on Netlify](https://velut-dictionary-links.netlify.app/)
+[Deployed on GitHub Pages](https://www.duncanritchie.co.uk/velut-dictionary-links)
 
 Webpage with a link that changes its href when you click it. The hrefs point to pages of online Latin dictionaries, and are determined by combining words in a textarea with a set of URL templates.
 
