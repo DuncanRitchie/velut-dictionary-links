@@ -212,6 +212,20 @@ const createLinkOrWarning = () => {
     }
 }
 
+const getUrlFromInputs = () => {
+    let urlParams = new URLSearchParams();
+    let tickedDictIds = [];
+    for (const tickbox of tickboxesDictionaries) {
+        if (tickbox.checked) {
+            tickedDictIds.push(tickbox.id.replace("tickbox-",""));
+        }
+    }
+
+    urlParams.set("words", textareaInput.value);
+    urlParams.set("dictionaries", tickedDictIds.join(" "));
+    return `./?${urlParams.toString()}`;
+}
+
 
 //// Event listeners.
 
@@ -225,7 +239,16 @@ buttonLoadSampleData.addEventListener("click", ()=>{
 });
 
 buttonCreateLink.addEventListener("click", ()=>{
-    createLinkOrWarning();
+    const newUrl = getUrlFromInputs();
+    const historyApiIsDefined = window.history.pushState && true;
+    if (historyApiIsDefined) {
+        window.history.pushState({}, '', newUrl)
+        createLinkOrWarning();
+    }
+    //// If History API is not available, we reload the page at the new URL.
+    else {
+        window.location.href = newUrl;
+    }
 });
 
 link.addEventListener("click", ()=>{
