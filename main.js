@@ -64,6 +64,19 @@ let currentIndexInUrls = 0;
 
 //// Functions:
 
+const setWordsFromQueryString = () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const words = urlParams.get("words");
+    if (words && !textareaInput.value.includes(words)) {
+        textareaInput.value += words;
+        console.log(words);
+    }
+}
+
+const interpretQueryString = () => {
+    setWordsFromQueryString();
+}
+
 const generateTickboxesHtml = () => {
     divDictionaryTickboxes.innerHTML = "";
 
@@ -197,6 +210,8 @@ buttonCreateLink.addEventListener("click", ()=>{
 link.addEventListener("click", ()=>{
     changeHrefOfLink();
 })
+
+interpretQueryString();
 
 //// Uncomment this to set the HTML according to the `dictionaries` array.
 // generateTickboxesHtml();
