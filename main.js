@@ -69,7 +69,6 @@ const setWordsFromQueryString = () => {
     const words = urlParams.get("words");
     if (words && !textareaInput.value.includes(words)) {
         textareaInput.value += words;
-        console.log(words);
     }
 }
 
