@@ -72,8 +72,21 @@ const setWordsFromQueryString = () => {
     }
 }
 
+const setDictionariesFromQueryString = () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const query = urlParams.get("dictionaries");
+    if (query) {
+        const queryArray = query.split(" ");
+        for (const tickbox of tickboxesDictionaries) {
+            const dictionaryName = tickbox.id.replace("tickbox-","");
+            tickbox.checked = queryArray.includes(dictionaryName);
+        }
+    }
+}
+
 const interpretQueryString = () => {
     setWordsFromQueryString();
+    setDictionariesFromQueryString();
 }
 
 const generateTickboxesHtml = () => {
