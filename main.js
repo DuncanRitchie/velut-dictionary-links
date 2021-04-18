@@ -64,16 +64,14 @@ let currentIndexInUrls = 0;
 
 //// Functions:
 
-const setWordsFromQueryString = () => {
-    const urlParams = new URLSearchParams(window.location.search);
+const setWordsFromQueryString = (urlParams = new URLSearchParams(window.location.search)) => {
     const words = urlParams.get("words");
     if (words && !textareaInput.value.includes(words)) {
         textareaInput.value += words;
     }
 }
 
-const setDictionariesFromQueryString = () => {
-    const urlParams = new URLSearchParams(window.location.search);
+const setDictionariesFromQueryString = (urlParams = new URLSearchParams(window.location.search)) => {
     const query = urlParams.get("dictionaries");
     if (query) {
         const queryArray = query.split(" ");
@@ -85,8 +83,14 @@ const setDictionariesFromQueryString = () => {
 }
 
 const interpretQueryString = () => {
-    setWordsFromQueryString();
-    setDictionariesFromQueryString();
+    const urlParams = new URLSearchParams(window.location.search);
+    setWordsFromQueryString(urlParams);
+    setDictionariesFromQueryString(urlParams);
+    if (urlParams.has("words")
+        || urlParams.has("dictionaries"))
+    {
+        createLinkOrWarning();
+    }
 }
 
 const generateTickboxesHtml = () => {
@@ -173,6 +177,7 @@ const changeHrefOfLink = () => {
     }
 }
 
+
 const createUrls = () => {
     clearTextMessages();
     urlObjects = [];
@@ -195,6 +200,18 @@ const createUrls = () => {
     textByCreateLink.textContent = "";
 }
 
+const createLinkOrWarning = () => {
+    if (textareaInput.value === "") {
+        warnOfEmptyInput();
+    }
+    else if (areNoDictionariesSelected()) {
+        warnOfNoDictionariesSelected();
+    }
+    else {
+        createUrls();
+    }
+}
+
 
 //// Event listeners.
 
@@ -208,15 +225,7 @@ buttonLoadSampleData.addEventListener("click", ()=>{
 });
 
 buttonCreateLink.addEventListener("click", ()=>{
-    if (textareaInput.value === "") {
-        warnOfEmptyInput();
-    }
-    else if (areNoDictionariesSelected()) {
-        warnOfNoDictionariesSelected();
-    }
-    else {
-        createUrls();
-    }
+    createLinkOrWarning();
 });
 
 link.addEventListener("click", ()=>{
