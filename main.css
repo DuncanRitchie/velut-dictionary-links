@@ -91,3 +91,14 @@ input[type="checkbox"]:focus + label {
 input[type="checkbox"]:focus + label::before {
     outline: none;
 }
+
+@media (max-width: 42rem) {
+    #inputs {
+        grid-template-columns: 1fr;
+        grid-template-areas: "input-label" 
+                             "input-textarea"
+                             "buttons"
+                             "dictionaries-label"
+                             "dictionary-tickboxes";
+    }
+}
