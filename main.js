@@ -33,10 +33,6 @@ const dictionaries = [
         "Formula": "https://logeion.uchicago.edu/INPUT",
         "RemoveDiacritics": true,
     },{
-        "Dictionary": "Morganianum",
-        "Formula": "https://neolatinlexicon.org/search/latin?search=INPUT",
-        "RemoveDiacritics": true,
-    },{
         "Dictionary": "Numen",
         "Formula": "https://latinlexicon.org/browse_latin.php?p1=INPUT&p2=1",
         "RemoveDiacritics": true,
