@@ -12,6 +12,7 @@ const link = document.getElementById("link");
 const sampleData = "arma vir cano Troia primus ab os Italia fatum profugus Lavinia venio litus multus ille et terra iacto altus vis superus saevus memor Iuno ob ira";
 
 const dictionaries = [
+    //// `Dictionary` must match the text content of the corresponding <label> in the HTML.
     {
         "Dictionary": "Gaffiot",
         "Formula": "https://micmap.org/dicfro/search/gaffiot/INPUT",
@@ -23,6 +24,10 @@ const dictionaries = [
     },{
         "Dictionary": "LatDict",
         "Formula": "https://www.latin-dictionary.net/search/latin/INPUT#search-results-list",
+        "RemoveDiacritics": true,
+    },{
+        "Dictionary": "Latinitas Recens",
+        "Formula": "https://latinitas-recens.netlify.app/?q=INPUT",
         "RemoveDiacritics": true,
     },{
         "Dictionary": "Liddell–Scott–Jones",
