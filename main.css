@@ -12,9 +12,13 @@ label {
     font-size: 1rem;
 }
 
-#inputs label:not([for]) {
+#inputs label:first-child {
     display: inline-block;
-    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+#buttons-under-textarea {
+    margin-top: 0.25rem;
 }
 
 #dictionary-tickboxes {
