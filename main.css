@@ -2,12 +2,10 @@
 
 #inputs {
     display: grid;
-    grid-template-columns: 1fr 0.75rem 1fr;
-    grid-template-areas: "input-label gap dictionaries-label"
-                         "input-textarea gap dictionary-tickboxes"
-                         "buttons gap dictionary-tickboxes";
+    grid-template-columns: 1fr 1fr;
     align-items: start;
-    margin: 0;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 label {
@@ -19,27 +17,9 @@ label {
     padding-bottom: 0.5rem;
 }
 
-#inputs label:first-of-type {
-    grid-area: input-label;
-}
-
-#inputs label:last-of-type {
-    grid-area: dictionaries-label;
-}
-
-#textarea-input {
-    grid-area: input-textarea;
-}
-
-#buttons-under-textarea {
-    grid-area: buttons;
-}
-
 #dictionary-tickboxes {
-    grid-area: dictionary-tickboxes;
     display: flex;
     flex-direction: row;
-    /* justify-content: flex-end; */
     flex-wrap: wrap;
     gap: 0.25rem;
 }
@@ -52,7 +32,6 @@ input[type="checkbox"] {
 }
 
 input[type="checkbox"] + label {
-    /* margin: 0 0.5rem 0 0; */
     display: inline-block;
     padding: 0.125rem 0.25rem 0.125rem 1.5rem;
     border: 0.5px solid var(--nav-text);
@@ -94,17 +73,11 @@ input[type="checkbox"]:focus + label::before {
 }
 
 #link-container {
-    margin-top: 0.5rem;
     text-align: right;
 }
 
 @media (max-width: 42rem) {
     #inputs {
         grid-template-columns: 1fr;
-        grid-template-areas: "input-label" 
-                             "input-textarea"
-                             "buttons"
-                             "dictionaries-label"
-                             "dictionary-tickboxes";
     }
 }
