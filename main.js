@@ -117,7 +117,7 @@ const generateTickboxesHtml = () => {
     for (let i = 0; i < dictionaries.length; i++) {
         const dictionary = dictionaries[i];
         newDiv = document.createElement("div");
-        newDiv.innerHTML = `<input type="checkbox" id="tickbox${i}" ${dictionary.Dictionary=="velut" ? "checked" : ""}/><label for="checkbox${i}">${dictionary.Dictionary}</label>`;
+        newDiv.innerHTML = `<input type="checkbox" id="tickbox${i}" ${dictionary.Dictionary=="velut" ? "checked" : ""}/><label for="tickbox${i}">${dictionary.Dictionary}</label>`;
         divDictionaryTickboxes.appendChild(newDiv);
     }
 }
