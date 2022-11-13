@@ -42,8 +42,12 @@ const dictionaries = [
         "Formula": "https://latinlexicon.org/browse_latin.php?p1=INPUT&p2=1",
         "RemoveDiacritics": true,
     },{
-        "Dictionary": "Packard Humanities",
+        "Dictionary": "PackHum (full word)",
         "Formula": "https://latin.packhum.org/concordance?q=%23INPUT%23",
+        "RemoveDiacritics": true,
+    },{
+        "Dictionary": "PackHum (substring)",
+        "Formula": "https://latin.packhum.org/concordance?q=INPUT",
         "RemoveDiacritics": true,
     },{
         "Dictionary": "Perseus",
