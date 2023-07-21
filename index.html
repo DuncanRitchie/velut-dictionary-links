@@ -14,13 +14,13 @@
 <body>
     <main>
         <h1>Duncan’s Links to Online Dictionaries for velut</h1>
-        <div id="inputs">
+        <form id="inputs">
             <div>
                 <label for="textarea-input">Enter words here:</label>
                 <textarea id="textarea-input"></textarea>
                 <div id="buttons-under-textarea">
-                    <button id="clear-inputs">Clear</button>
-                    <button id="load-sample-data">Load sample</button>
+                    <button type="button" id="clear-inputs">Clear</button>
+                    <button type="button" id="load-sample-data">Load sample</button>
                 </div>
             </div>
 
@@ -89,12 +89,12 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
 
         <div id="link-container">
             <span id="text-by-create-link"></span>
             <a id="link" target="_blank" href="" title=""></a>
-            <button id="create-link">Create Link</button>
+            <button id="create-link" type="submit" form="inputs">Create Link</button>
         </div>
 
         <section>

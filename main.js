@@ -4,7 +4,7 @@ const textareaInput = document.getElementById("textarea-input");
 const divDictionaryTickboxes = document.getElementById("dictionary-tickboxes");
 const tickboxesDictionaries = document.querySelectorAll("#dictionary-tickboxes input");
 const textByCreateLink = document.getElementById("text-by-create-link");
-const buttonCreateLink = document.getElementById("create-link");
+const form = document.getElementById("inputs");
 const link = document.getElementById("link");
 
 
@@ -278,7 +278,8 @@ buttonLoadSampleData.addEventListener("click", ()=>{
     clearTextMessages();
 });
 
-buttonCreateLink.addEventListener("click", ()=>{
+form.addEventListener("submit", (event)=>{
+    event.preventDefault();
     const newUrl = getUrlFromInputs();
     const historyApiIsDefined = window.history.pushState && true;
     if (historyApiIsDefined) {
