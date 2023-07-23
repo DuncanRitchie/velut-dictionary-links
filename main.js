@@ -296,6 +296,13 @@ link.addEventListener("click", ()=>{
     changeHrefOfLink();
 })
 
+//// Clicking with the mouse-wheel
+link.addEventListener("auxclick", (event)=>{
+    if (event.button === 1) {
+        changeHrefOfLink();
+    }
+})
+
 interpretQueryString();
 
 //// Uncomment this to set the HTML according to the `dictionaries` array.
