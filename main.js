@@ -194,7 +194,7 @@ const changeHrefOfLink = () => {
             link.textContent = `${currentUrlObject.Dictionary} — ${currentUrlObject.Word}`;
             link.href = currentUrlObject.URL;
             link.title = `${currentUrlObject.Dictionary} — ${currentUrlObject.Word}`;
-            link.style.display = "initial";
+            link.removeAttribute('hidden');
         }, 50);
 
         currentIndexInUrls++;
@@ -206,7 +206,7 @@ const changeHrefOfLink = () => {
             link.href = "";
             link.title = "";
             link.textContent = "";
-            link.style.display = "none";
+            link.setAttribute('hidden', '');
         }, 50);
         currentIndexInUrls = 0;
         textByCreateLink.textContent = "All links have been opened!";
@@ -218,6 +218,8 @@ const createUrls = () => {
     clearTextMessages();
     urlObjects = [];
     currentIndexInUrls = 0;
+
+    link.removeAttribute('hidden')
 
     const words = getAffixesFromTextArea(textareaInput);
     const tickedDictionaries = getTickedDictionaries();
